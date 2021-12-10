@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Library</title>
+</head>
+
+<body>
+    <header>
+        <h1>Library</h1>
+    </header>
+
+
+    <div class="container">
+        <div class="div1">
+            <button class="container__add-book-button">NEW BOOK</button>
+        </div>
+        <div class="library">
+            <div class="library__row"></div>
+        </div>
+    </div>
+
+    <div class="form-popup">
+        <form class="form-container">
+            <h1>New Book</h1>
+
+            <label for="title"><b>Title:</b></label>
+            <input type="text" placeholder="Enter Title" name="title" class='title-field' required>
+
+            <label for="author"><b>Author:</b></label>
+            <input type="text" placeholder="Enter Author" name="author" class='author-field' required>
+
+            <label for="pages"><b>Pages:</b></label>
+            <input type="text" placeholder="Enter Number of Pages" name="pages" class='pages-field' required>
+
+            <label for="read"><b>Read:</b></label>
+
+            <input type="checkbox" name="read" class='read-field'>
+
+            <button type='button' class='submit-btn'>Submit</button>
+
+            <button type="button" class="cancel-btn">Cancel</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
