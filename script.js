@@ -14,16 +14,32 @@ function Book(title, author, pages, read) {
 
 
 function addBookToLibrary(title, author, pages, read) {
-    myLibrary.push(new Book(title, author, pages, read));
+    const newBook = new Book(title, author, pages, read);
+    newBook.data = myLibrary.length;
+    myLibrary.push(newBook);
     displayLibrary();
 }
 
+function updateArray() {
+    for (let i = 0; i < myLibrary.length; i++) {
+        myLibrary[i].data = i;
+    }
+}
 
-
+function deleteBook(index) {
+    if (index > -1) {
+        myLibrary.splice(index, 1);
+    }
+    updateArray();
+    displayLibrary();
+}
 
 function displayLibrary() {
     libraryView.querySelectorAll('*').forEach(element => element.remove());
     for (const book of myLibrary) {
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = "Delete Book";
 
         const bookContainer = document.createElement('div');
         const bookTitle = document.createElement('div');
@@ -31,6 +47,7 @@ function displayLibrary() {
         const bookPages = document.createElement('div');
         const bookRead = document.createElement('div');
 
+        deleteButton.classList.add('book__delete-btn');
         bookContainer.classList.add('book');
         bookTitle.classList.add('book__title');
         bookAuthor.classList.add('book__author');
@@ -42,13 +59,20 @@ function displayLibrary() {
         bookPages.textContent = book.pages;
         bookRead.textContent = book.read;
 
+        bookContainer.data = book.data;
 
+        bookContainer.appendChild(deleteButton);
         bookContainer.appendChild(bookTitle);
         bookContainer.appendChild(bookAuthor);
         bookContainer.appendChild(bookPages);
         bookContainer.appendChild(bookRead);
 
+        deleteButton.addEventListener('click', () => {
+            deleteBook(bookContainer.data);
+        });
+
         libraryView.appendChild(bookContainer);
+
     }
 }
 
